@@ -1,0 +1,6 @@
+@import '../../../styles/base/_variables';
+
+.mainHeader{
+  font-size: 2.3em;
+  color: $header-color;
+}

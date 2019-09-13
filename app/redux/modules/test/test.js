@@ -75,6 +75,6 @@ export default function test(state = initialState, action) {
     })
   }
 
-  return (action.type && options[action.type]) ? options[action.type]() : state
+  return action.type && options[action.type] ? options[action.type]() : state
 }
 

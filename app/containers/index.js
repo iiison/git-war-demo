@@ -1,1 +1,1 @@
-export SideNav from './SideNav'
+export Home from './Home/Home.jsx'

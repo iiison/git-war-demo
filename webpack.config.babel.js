@@ -16,16 +16,18 @@ import { devStyleConfig, prodStyleConfig } from './build-configs'
 const LAUNCH_COMMAND = process.env.npm_lifecycle_event
 const isProduction = LAUNCH_COMMAND === 'prod'
 // const isLocal = LAUNCH_COMMAND === 'local'
-const shouldUseSourceMaps = isProduction
+const shouldUseSourceMaps = !isProduction
 const PATHS = {
   app          : path.join(__dirname, 'app'),
   build        : path.join(__dirname, 'build'),
   redux        : path.join(__dirname, 'app/redux'),
   reduxUtils   : path.join(__dirname, 'app/redux/utils'),
   styles       : path.join(__dirname, 'app/styles'),
+  utils        : path.join(__dirname, 'app/utils'),
   configs      : path.join(__dirname, 'app/configs'),
   components   : path.join(__dirname, 'app/components'),
   containers   : path.join(__dirname, 'app/containers'),
+  sharedConts  : path.join(__dirname, 'app/containers/shared'),
   icons        : path.join(__dirname, 'app/containers/icons'),
   reduxModules : path.join(__dirname, 'app/redux/modules')
 }
@@ -162,7 +164,7 @@ const baseConfigs = {
         enforce : 'pre',
         test    : /\.(js|jsx)$/,
         include : PATHS.app,
-        options : { fix : true },
+        // options : { fix : true },
         loader  : 'eslint-loader',
         exclude : [/bundle\.js|coverage/, /node_modules/]
       },
@@ -184,15 +186,15 @@ const baseConfigs = {
             test : /\.css$/,
             exclude : [path.resolve(__dirname, 'coverage'), /node_modules/],
             loader : isProduction ? prodStyleConfig : devStyleConfig
-          }
+          },
         // ]
       // }
     ]
   },
   resolve : {
     extensions : ['.js', '.jsx', '.css', '.json'],
-    modules : [path.resolve('.'), 'node_modules'],
-    alias : {
+    modules    : [path.resolve('.'), 'node_modules'],
+    alias      : {
       $APP        : PATHS.app,
       $REDUX      : PATHS.redux,
       $BUILD      : PATHS.build,
@@ -201,15 +203,17 @@ const baseConfigs = {
       $RMODULES   : PATHS.reduxModules,
       $CONTAINERS : PATHS.containers,
       $COMPONENTS : PATHS.components,
-      $ICONS      : PATHS.icons
+      $ICONS      : PATHS.icons,
+      $UTILS      : PATHS.utils,
+      $SHAREDCONT : PATHS.sharedConts
     }
   },
   optimization : {
     minimize    : isProduction,
     minimizer   : [terserPlugin, optimizeCSSAssetsPlugin],
     splitChunks : {
-      chunks : 'async',
       // chunks : 'all',
+      chunks : 'async',
       name   : false,
       cacheGroups : {
         styles : {
@@ -236,6 +240,11 @@ const baseConfigs = {
     child_process : 'empty'
   }
 }
+
+console.log('******************************************')
+console.log(isProduction)
+console.log('******************************************')
+
 
 const devConfigs = {
   devtool : 'cheap-module-source-map',

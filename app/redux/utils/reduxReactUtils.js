@@ -1,24 +1,25 @@
-/* eslint-disable */
-import React, { useCallback, useContext, useEffect } from 'react'
+import { useCallback } from 'react'
 import { useDispatch, useMappedState } from 'redux-react-hook'
 
 function useDispatchableAction ( action, dependencies ) {
   const dispatch = useDispatch()
-  const actionCreator = useCallback(() => dispatch(action()), dependencies)
+  const actionCreator = useCallback(function(){
+    return dispatch(action.apply(null, arguments))
+  }, [action, dispatch, dependencies])
 
   return actionCreator
 }
 
-export function useDispatchableActions (actions, dependencies = []) {
-  return actions.reduce((prev, { action, dependencies = [] }) => ({
+export function useDispatchableActions (actions) {
+  return actions.reduce((prev, { action, dependencies = [], name }) => ({
     ...prev,
-    [`${action.name}Action`] : useDispatchableAction(action, dependencies)
+    [name] : useDispatchableAction(action, dependencies) // eslint-disable-line
   }), {})
   // return actions.map(({ action, dependencies = [] }) => useDispatchableAction(action, dependencies))
 }
 
 function useStore (fieldName) {
-  const mapState = useCallback((state) => ({ [fieldName] : state[fieldName] }), [])
+  const mapState = useCallback((state) => ({ [fieldName] : state[fieldName] }), [fieldName])
   const value = useMappedState(mapState)
 
   return value
@@ -26,12 +27,10 @@ function useStore (fieldName) {
 
 export function useStoreValues (stateFields) {
   return stateFields.reduce((prev, fieldName) => {
-
     return {
       ...prev,
-        [fieldName] : useStore(fieldName)[fieldName]
+      [fieldName] : useStore(fieldName)[fieldName] // eslint-disable-line
     } 
   }, {})
 }
-
 
