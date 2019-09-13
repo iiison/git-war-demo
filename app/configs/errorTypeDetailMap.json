@@ -1,0 +1,5 @@
+{
+  "unauthed" : "Error! Please check user name and password.",
+  "network"  : "Sorry, our server is acting up, please try after some time.",
+  "generic"  : "Something is not right, we are looking into it. Please try after some time."
+}

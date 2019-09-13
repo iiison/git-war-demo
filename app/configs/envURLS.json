@@ -1,0 +1,6 @@
+{
+  "alpha" : "https://api.github.com/",
+  "prod" : "https://api.github.com/",
+  "test" : "ws://35.227.174.154:9999/api/"
+}
+

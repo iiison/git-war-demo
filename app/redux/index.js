@@ -1,3 +1,5 @@
-export test from './modules/test/test'
-export employee from './modules/test/test2'
+// export home from './modules/home/home'
+export reactRepo from './modules/home/reactRepo'
+export angularRepo from './modules/home/angularRepo'
+export vueRepo from './modules/home/vueRepo'
 
