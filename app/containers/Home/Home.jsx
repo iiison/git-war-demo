@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { Link }    from 'react-router-dom'
 
-import { Header, MainContainer } from '$SHAREDCONT'
+import { Header, MainContainer, RepoTile } from '$SHAREDCONT'
 import * as reactActions from '$RMODULES/home/reactRepo'
 import * as angularActions from '$RMODULES/home/angularRepo'
 import * as vueActions from '$RMODULES/home/vueRepo'
@@ -12,7 +12,11 @@ export default function Home() {
   const { fetchAngularDetails } = angularActions 
   const { fetchVueDetails } = vueActions 
 
-  // const { reactRepo = {}, angularRepo = {} } = useStoreValues(['reactRepo', 'angularRepo'])
+  const { 
+    vueRepo = {},
+    reactRepo = {},
+    angularRepo = {}
+  } = useStoreValues(['reactRepo', 'angularRepo', 'vueRepo'])
   const {
     fetchReactDetailsAction, fetchAngularDetailsAction, fetchVueDetailsAction
   } = useDispatchableActions([
@@ -34,18 +38,6 @@ export default function Home() {
     fetchReactDetailsAction()
     fetchAngularDetailsAction()
     fetchVueDetailsAction()
-
-    // fetchAngularDetailsAction()
-
-    // fetchReactDetailsAction({
-    //   id   : 'vue',
-    //   path : 'vuejs/vue'
-    // })
-    //
-    // fetchReactDetailsAction({
-    //   id   : 'angular',
-    //   path : 'angular/angular'
-    // })
   }, [])
 
   return (
@@ -55,6 +47,11 @@ export default function Home() {
           <span className='col-6'>React War Room</span>
         </div>
       </Header>
+      <h2>Allies</h2>
+      <RepoTile data={reactRepo} />
+      <h2 style={{marginTop : '50px'}}>Enimies</h2>
+      <RepoTile data={angularRepo} />
+      <RepoTile data={vueRepo} />
     </MainContainer>
   )
 }

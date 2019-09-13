@@ -1,0 +1,18 @@
+@import '../../../styles/base/_variables';
+
+.tileCont{
+  border: 1px solid $disabled-2;
+  margin-top: 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.repoImg{
+  height: 200px;
+  width: 200px;
+
+  img {
+    max-height: 90%;
+    max-width: 90%;
+  }
+}

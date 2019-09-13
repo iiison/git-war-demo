@@ -13,7 +13,7 @@ function getRepoData({
     stars      : stargazers_count,
     openIssues : open_issues_count,
     forks      : forks_count,
-    prCounts   : pulls_url,
+    prCounts   : pulls_url.slice(0, pulls_url.indexOf('{')),
     avatar     : avatar_url
   }
 }
@@ -37,13 +37,9 @@ export function makeRepoReducer({ name, path }) {
         })
         const repoData = getRepoData(response)
 
-        dispatch(
-          successAction(repoData)
-        )
+        dispatch(successAction(repoData))
       } catch (error){
-        dispatch(failureAction(error.message))
-
-        throw error.message
+        dispatch(failureAction(error.message || error))
       }
     }
   }
