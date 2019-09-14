@@ -5,11 +5,16 @@
   margin-top: 20px;
   border-radius: 5px;
   cursor: pointer;
+  transition: all 0.4s ease-in-out;
+
+  &:hover{
+    border-color: $theme;
+  }
 }
 
 .repoImg{
-  height: 200px;
-  width: 200px;
+  height: 150px;
+  width: 150px;
 
   img {
     max-height: 90%;

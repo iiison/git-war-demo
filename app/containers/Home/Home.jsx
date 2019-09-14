@@ -7,10 +7,14 @@ import * as angularActions from '$RMODULES/home/angularRepo'
 import * as vueActions from '$RMODULES/home/vueRepo'
 import { useDispatchableActions, useStoreValues } from '$RUTILS/reduxReactUtils'
 
-export default function Home() {
+export default function Home({ history : { push } }) {
   const { fetchReactDetails } = reactActions 
   const { fetchAngularDetails } = angularActions 
   const { fetchVueDetails } = vueActions 
+
+  const commonProps = {
+    pushRef : push
+  }
 
   const { 
     vueRepo = {},
@@ -48,10 +52,10 @@ export default function Home() {
         </div>
       </Header>
       <h2>Allies</h2>
-      <RepoTile data={reactRepo} />
+      <RepoTile data={reactRepo} name='react' {...commonProps} />
       <h2 style={{marginTop : '50px'}}>Enimies</h2>
-      <RepoTile data={angularRepo} />
-      <RepoTile data={vueRepo} />
+      <RepoTile data={angularRepo} name='angular' {...commonProps} />
+      <RepoTile data={vueRepo} name='vue' {...commonProps} />
     </MainContainer>
   )
 }

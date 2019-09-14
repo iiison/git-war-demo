@@ -3,13 +3,17 @@ import { makeActions, makeReducer } from '$RUTILS/reduxUtils'
 
 /* eslint-disable camelcase */
 function getRepoData({
+  name,
+  pulls_url,
+  description,
+  forks_count,
   stargazers_count,
   open_issues_count,
-  forks_count,
-  pulls_url,
   organization : { avatar_url }
 }){
   return {
+    name,
+    description,
     stars      : stargazers_count,
     openIssues : open_issues_count,
     forks      : forks_count,
