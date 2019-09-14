@@ -62,6 +62,7 @@ function selectEnvURL(envName, type = 'http') {
  * @param  {String} envName If making request to different environment
  * @return {Promise}        Promise of get request
  */
+/* eslint-disable */
 export async function get(reqObj, envName) {
   let response, url
 
@@ -96,12 +97,26 @@ export async function get(reqObj, envName) {
     return response
   }
 
+  const responseHeaders = {}
+
+  if (reqObj.getResponseHeaders) {
+    for (const [key, value] of response.headers.entries()) {
+      if (reqObj.getResponseHeaders.includes(key)) {
+        responseHeaders[key] = value
+      }
+    }
+  }
+
   const body = await httpStatusParser(response, reqObj.dispatch, reqObj.shouldRedirectToLogin)
 
   if (body.errors) {
     throw Error(body.errors)
   } else {
-    return body
+    return reqObj.getResponseHeaders 
+      ? {
+        response : body,
+        responseHeaders
+      } : body
   }
 }
 

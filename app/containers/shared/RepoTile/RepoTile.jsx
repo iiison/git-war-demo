@@ -17,7 +17,7 @@ const repoStaticData = {
 }
 /* eslint-enable */
 
-function drawTile({ name, description }) {
+function drawTile({ name, description, stars, forks, openIssues }) {
   const { image } = repoStaticData[name.toLowerCase()]
 
   return (
@@ -35,13 +35,13 @@ function drawTile({ name, description }) {
             <div className='col-12 padded-top-s'>
               <div className='grid'>
                 <div className='col-3'>
-                  10000 Stars
+                  {`${stars} Stars`}
                 </div>
                 <div className='col-3'>
-                  20 Issues
+                  {`${openIssues} Open Issues`}
                 </div>
                 <div className='col-3'>
-                  50 Forks
+                  {`${forks} Forks`}
                 </div>
                 <div className='col-3'>
                   12 PR&apos;s
@@ -62,7 +62,7 @@ function RepoTile({ data, pushRef }) {
     <div
       className='grid col-12'
       role='button' 
-      onClick={() => response && pushRef(`/repo/${response.name}`)}
+      onClick={() => pushRef && response && pushRef(`/repos/${response.name}`)}
     >
       <RenderUI keyData={data}>
         {response && drawTile({ ...response })}

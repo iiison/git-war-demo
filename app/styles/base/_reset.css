@@ -32,7 +32,6 @@ body{
   line-height: 1.2;
   word-wrap: break-word;
   -webkit-text-size-adjust: none;
-  overflow-y: scroll;
 }
 
 /* stylelint-enable  */

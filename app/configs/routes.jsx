@@ -2,10 +2,11 @@ import React from 'react'
 import { Route, Switch } from 'react-router-dom'
 
 // import Test from '$COMPONENTS/test'
-import Test2 from '$COMPONENTS/Test2'
+// import Test2 from '$COMPONENTS/Test2'
 
 import {
-  Home
+  Home,
+  RepoDetails
 } from '$CONTAINERS'
 
 const routes = () => (
@@ -13,7 +14,7 @@ const routes = () => (
     <div className='col'>
       <Switch>
         <Route exact={true} path='/' component={Home} />
-        <Route exact={true} path='/repos/:repoName' component={Test2} />
+        <Route exact={true} path='/repos/:repoName' component={RepoDetails} />
       </Switch>
     </div>
   </div>

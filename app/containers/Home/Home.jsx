@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react'
-import { Link }    from 'react-router-dom'
 
 import { Header, MainContainer, RepoTile } from '$SHAREDCONT'
 import * as reactActions from '$RMODULES/home/reactRepo'
@@ -48,14 +47,14 @@ export default function Home({ history : { push } }) {
     <MainContainer>
       <Header>
         <div className='col-12 grid'>
-          <span className='col-6'>React War Room</span>
+          <span className='col-12'>React War Room</span>
         </div>
       </Header>
       <h2>Allies</h2>
-      <RepoTile data={reactRepo} name='react' {...commonProps} />
+      <RepoTile data={reactRepo} {...commonProps} />
       <h2 style={{marginTop : '50px'}}>Enimies</h2>
-      <RepoTile data={angularRepo} name='angular' {...commonProps} />
-      <RepoTile data={vueRepo} name='vue' {...commonProps} />
+      <RepoTile data={angularRepo} {...commonProps} />
+      <RepoTile data={vueRepo} {...commonProps} />
     </MainContainer>
   )
 }
