@@ -3,9 +3,9 @@ import { makeRepoReducer } from './home'
 const {
   fetchVueDetails,
   actions : {
-    FETCH_VUE_DETAILS,
-    FETCH_VUE_DETAILS_SUCCESS,
-    FETCH_VUE_DETAILS_FAILURE,
+    getVue,
+    getVueSuccess,
+    getVueFailure,
   },
   reducer : vueRepo,
 } = makeRepoReducer({
@@ -14,10 +14,10 @@ const {
 })
 
 export {
-  fetchVueDetails,
-  FETCH_VUE_DETAILS,
-  FETCH_VUE_DETAILS_SUCCESS,
-  FETCH_VUE_DETAILS_FAILURE
+  getVue,
+  getVueSuccess,
+  getVueFailure,
+  fetchVueDetails
 }
 
 export default vueRepo

@@ -3,9 +3,9 @@ import { makeRepoReducer } from './home'
 const {
   fetchAngularDetails,
   actions : {
-    FETCH_ANGULAR_DETAILS,
-    FETCH_ANGULAR_DETAILS_SUCCESS,
-    FETCH_ANGULAR_DETAILS_FAILURE,
+    getAngular,
+    getAngularSuccess,
+    getAngularFailure,
   },
   reducer : angularRepo,
 } = makeRepoReducer({
@@ -14,11 +14,10 @@ const {
 })
 
 export {
-  fetchAngularDetails,
-  FETCH_ANGULAR_DETAILS,
-  FETCH_ANGULAR_DETAILS_SUCCESS,
-  FETCH_ANGULAR_DETAILS_FAILURE
+  getAngular,
+  getAngularSuccess,
+  getAngularFailure,
+  fetchAngularDetails
 }
 
 export default angularRepo
-

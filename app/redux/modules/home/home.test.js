@@ -7,9 +7,9 @@ describe('>>> (fn) -- Tests makeRepoReducer Function', () => {
       path : '/abc/def'
     })
     const expectedActions = [
-      'GET_DUMMY_DETAILS',
-      'GET_DUMMY_DETAILS_SUCCESS',
-      'GET_DUMMY_DETAILS_FAILURE'
+      'getDummy',
+      'getDummySuccess',
+      'getDummyFailure'
     ]
 
     const { actions, reducer, fetchDummyDetails } = result

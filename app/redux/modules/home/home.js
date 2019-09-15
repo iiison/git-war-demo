@@ -54,9 +54,9 @@ export function makeRepoReducer({ name, path }) {
     reducer,
     [`fetch${name}Details`] : asyncAction,
     actions                 : {
-      [actionName[0]]              : defaultAction,
-      [`${actionName[0]}_SUCCESS`] : successAction,
-      [`${actionName[0]}_FAILURE`] : failureAction
+      [`get${name}`]        : defaultAction,
+      [`get${name}Success`] : successAction,
+      [`get${name}Failure`] : failureAction
     }
   }
 }

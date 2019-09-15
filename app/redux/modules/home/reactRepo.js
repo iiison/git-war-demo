@@ -3,9 +3,9 @@ import { makeRepoReducer } from './home'
 const {
   fetchReactDetails,
   actions : {
-    FETCH_REACT_DETAILS,
-    FETCH_REACT_DETAILS_SUCCESS,
-    FETCH_REACT_DETAILS_FAILURE,
+    getReact,
+    getReactSuccess,
+    getReactFailure,
   },
   reducer : reactRepo,
 } = makeRepoReducer({
@@ -14,10 +14,11 @@ const {
 })
 
 export {
-  fetchReactDetails,
-  FETCH_REACT_DETAILS,
-  FETCH_REACT_DETAILS_SUCCESS,
-  FETCH_REACT_DETAILS_FAILURE
+  getReact,
+  getReactSuccess,
+  getReactFailure,
+  fetchReactDetails
 }
 
 export default reactRepo
+
