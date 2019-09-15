@@ -12,6 +12,32 @@
         regenerator : true
       }
     ]
-  ]
+  ],
+  "env" : {
+    "test" : {
+      'plugins': [
+        'transform-es2015-modules-commonjs',
+        [
+          'module-resolver',
+          {
+            'alias' : {
+              '$APP'         : './app',
+              '$BUILD'       : './build',
+              '$UTILS'       : './app/utils',
+              '$REDUX'       : './app/redux',
+              '$CONFIGS'      : './app/configs',
+              '$CONTAINERS'  : './app/containers',
+              '$COMPONENTS'  : './app/components',
+              '$RUTILS'      : './app/redux/utils',
+              '$RMODULES'    : './app/redux/modules',
+              '$ICONS'       : './app/containers/icons',
+              '$$SHAREDCONT' : './app/containers/shared'
+            },
+            'root': ['./app', './node_modules'],
+          }
+        ]
+      ]
+    }
+  }
 }
 

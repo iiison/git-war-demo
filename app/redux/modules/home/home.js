@@ -2,15 +2,14 @@ import { get } from '$UTILS/requestHandler'
 import { makeActions, makeReducer } from '$RUTILS/reduxUtils'
 
 /* eslint-disable camelcase */
-function getRepoData({
+export function getRepoData({
   name,
   pulls_url,
   description,
   forks_count,
   stargazers_url,
   stargazers_count,
-  open_issues_count,
-  organization : { avatar_url }
+  open_issues_count
 }){
   return {
     name,
@@ -19,7 +18,6 @@ function getRepoData({
     openIssues : open_issues_count,
     forks      : forks_count,
     prCounts   : pulls_url.slice(0, pulls_url.indexOf('{')),
-    avatar     : avatar_url,
     starURL    : stargazers_url.replace('https://api.github.com/', '')
   }
 }
