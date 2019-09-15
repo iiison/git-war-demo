@@ -23,10 +23,10 @@ function drawTile({ name, description, stars, forks, openIssues }) {
   return (
     <div className={`col-12 padded-l ${styles.tileCont}`}>
       <div className='grid-middle'>
-        <div className={`${styles.repoImg} grid-middle grid-center`}>
+        <div className={`${styles.repoImg} grid-middle grid-center full-at-md`}>
           <img src={image} alt='repo' />
         </div>
-        <div className='col-7 padded-l'>
+        <div className='col-7 padded-l col_md-12'>
           <div className={`col-12 ${styles.repoDetails} grid-middle`}>
             <h2 className='col-12 t-capitalize'>{name}</h2>
             <p className='col-12  padded-top-s'>{description}</p>

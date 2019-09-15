@@ -121,10 +121,10 @@ export default function RepoDetails({ match : { params : { repoName } } }) {
                   <div className='grid'>
                     <div className='col-11'>
                       <div className={`grid-middle ${styles.userCont}`}>
-                        <div className={`${styles.userImg} grid-middle grid-center`}>
+                        <div className={`${styles.userImg} grid-middle grid-center full-at-md`}>
                           <img src={image} alt={name} />
                         </div>
-                        <div className='col'>
+                        <div className='col full-at-md center-at-md'>
                           {name}
                         </div>
                       </div>
