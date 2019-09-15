@@ -9,6 +9,7 @@ import { useDispatchableActions, useStoreValues } from '$RUTILS/reduxReactUtils'
 import { debounce } from '$UTILS'
 
 import { RenderUI } from '../renderData'
+import styles from './styles.css'
 
 let scrollEvent
 
@@ -115,13 +116,23 @@ export default function RepoDetails({ match : { params : { repoName } } }) {
         <div className='grid'>
           <RenderUI keyData={repoDetails}>
             {
-              repoDetails.response && repoDetails.response.response.map(({login}) => (
-                <div key={login} className='col-12 padded-xxl'>
-                  {`User : ${login}`}
+              repoDetails.response && repoDetails.response.response.map(({name, image}) => (
+                <div key={name} className='col-4 margin-tb-s'>
+                  <div className='grid'>
+                    <div className='col-11'>
+                      <div className={`grid-middle ${styles.userCont}`}>
+                        <div className={`${styles.userImg} grid-middle grid-center`}>
+                          <img src={image} alt={name} />
+                        </div>
+                        <div className='col'>
+                          {name}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               ))
             }
-            
           </RenderUI>
         </div>
       </div>

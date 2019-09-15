@@ -1,6 +1,14 @@
 import { get } from '$UTILS/requestHandler'
 import { makeActions, makeReducer } from '$RUTILS/reduxUtils'
 
+/* eslint-disable camelcase */
+function getUserRelatedData(list){
+  return list.map(({ login, avatar_url }) => ({
+    name  : login,
+    image : avatar_url
+  }))
+}
+/* eslint-enable */
 
 const GET_REPO_STARERS = 'GET_REPO_STARERS'
 
@@ -40,7 +48,9 @@ export function fetchRepoStarers({ path, type = 'initial' }) {
         .reduce((prev, curr) => { 
           return curr.includes('next') ? curr : prev
         }, '')
+      const formattedUsersList = getUserRelatedData(response.response)
 
+      response.response = formattedUsersList
       response.responseHeaders.link = nextPathFregment
         .slice(0, nextPathFregment.indexOf('>'))
         .replace('<https://api.github.com/', '')
