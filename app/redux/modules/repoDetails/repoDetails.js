@@ -44,14 +44,14 @@ export function fetchRepoStarers({ path, type = 'initial' }) {
         getResponseHeaders : ['link']
       })
       const link = response.responseHeaders.link
-      const nextPathFregment = link.split(', ')
+      const nextPathFregment =  link && link.split(', ')
         .reduce((prev, curr) => { 
           return curr.includes('next') ? curr : prev
         }, '')
       const formattedUsersList = getUserRelatedData(response.response)
 
       response.response = formattedUsersList
-      response.responseHeaders.link = nextPathFregment
+      response.responseHeaders.link = nextPathFregment && nextPathFregment
         .slice(0, nextPathFregment.indexOf('>'))
         .replace('<https://api.github.com/', '')
 
