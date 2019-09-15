@@ -43,6 +43,10 @@ export default function Home({ history : { push } }) {
     fetchVueDetailsAction()
   }, [])
 
+  console.log('*****************************')
+  console.log(reactRepo)
+  console.log('*****************************')
+
   return (
     <MainContainer>
       <Header>

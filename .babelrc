@@ -25,13 +25,13 @@
               '$BUILD'       : './build',
               '$UTILS'       : './app/utils',
               '$REDUX'       : './app/redux',
-              '$CONFIGS'      : './app/configs',
+              '$CONFIGS'     : './app/configs',
               '$CONTAINERS'  : './app/containers',
               '$COMPONENTS'  : './app/components',
               '$RUTILS'      : './app/redux/utils',
               '$RMODULES'    : './app/redux/modules',
               '$ICONS'       : './app/containers/icons',
-              '$$SHAREDCONT' : './app/containers/shared'
+              '$SHAREDCONT'  : './app/containers/shared'
             },
             'root': ['./app', './node_modules'],
           }

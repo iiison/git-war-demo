@@ -1,5 +1,5 @@
 import React from 'react'
-import styles from './styles'
+import styles from './styles.css'
 
 export default function Header({ children }) {
   return (
